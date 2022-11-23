@@ -1,9 +1,10 @@
 UK_ROOT ?= $(PWD)/../../unikraft
 UK_LIBS ?= $(PWD)/../../libs
-LIBS :=
+UK_PLATS ?=  $(PWD)/../../plats
+LIBS := $(UK_LIBS)/lwip
 
 all:
-	@$(MAKE) -C $(UK_ROOT) A=$(PWD) L=$(LIBS)
+	@$(MAKE) -C $(UK_ROOT) A=$(PWD) L=$(LIBS) P=$(UK_PLATS)/hyperv
 
 $(MAKECMDGOALS):
-	@$(MAKE) -C $(UK_ROOT) A=$(PWD) L=$(LIBS) $(MAKECMDGOALS)
+	@$(MAKE) -C $(UK_ROOT) A=$(PWD) L=$(LIBS) P=$(UK_PLATS)/hyperv $(MAKECMDGOALS)
